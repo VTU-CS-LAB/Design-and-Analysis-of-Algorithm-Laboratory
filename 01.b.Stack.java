@@ -52,7 +52,7 @@ class Main {
 
         Stack stack = new Stack(n);
 
-        WhileLoop: while (true) {
+        while (true) {
             System.out.println("\nStack Operations");
             System.out.println("1. Push");
             System.out.println("2. Pop");
@@ -75,9 +75,9 @@ class Main {
                 break;
 
             case 4:
-                break WhileLoop;
+                scanner.close();
+                return;
             }
         }
-        scanner.close();
     }
 }
