@@ -75,7 +75,6 @@ class Main {
                 break;
 
             case 4:
-                scanner.close();
                 return;
             }
         }

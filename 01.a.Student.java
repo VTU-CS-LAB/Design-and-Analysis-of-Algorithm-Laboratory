@@ -31,8 +31,6 @@ class Student {
 
         System.out.println("Enter Phone\n");
         ph = scanner.next();
-
-        scanner.close();
     }
 
     public void display() {
@@ -61,7 +59,5 @@ class Main {
         for (int i = 0; i < n; i++) {
             ob1[i].display();
         }
-
-        scanner.close();
     }
 }
