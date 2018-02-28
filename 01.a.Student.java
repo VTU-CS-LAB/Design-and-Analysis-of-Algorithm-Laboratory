@@ -1,6 +1,6 @@
 
 /*
-1.a. Create a Java class called Studentwith the following details as variables within it.
+1.a. Create a Java class called Student with the following details as variables within it.
 (i) USN
 (ii) Name
 (iii) Branch
