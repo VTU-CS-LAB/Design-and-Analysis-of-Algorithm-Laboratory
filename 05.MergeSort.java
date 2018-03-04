@@ -90,16 +90,12 @@ class MergeSort {
             generateWorstCase(arr, 0, n - 1);
             break;
         }
-        for (int i = 0; i < n; i++) {
-            System.out.println(arr[i]);
-        }
+        
         long start = System.nanoTime();
         mergeSort(arr, 0, n - 1);
         long end = System.nanoTime();
         System.out.println("Sorted Array");
-        for (int i = 0; i < n; i++) {
-            System.out.println(arr[i]);
-        }
+        
         System.out.println("Time Taken: " + (end - start));
         System.out.println("Comparisons: " + comparisons);
     }
