@@ -42,18 +42,21 @@ class MergeSort {
             k++;
         }
         while (i <= mid) {
+            // Put remaining elements from left subpart (if any) to temporary array.
             t_arr[k] = arr[i];
             comparisons += 1;
             i++;
             k++;
         }
         while (j <= high) {
+            // Put remaining elements from right subpart (if any) to temporary array.
             t_arr[k] = arr[j];
             comparisons += 1;
             j++;
             k++;
         }
         for (k = 0; k < n; k++) {
+            // Copy Elements from temporary array to original array.
             comparisons += 1;
             arr[low + k] = t_arr[k];
         }
@@ -96,7 +99,9 @@ class MergeSort {
         long end = System.nanoTime();
         System.out.println("Sorted Array");
         
+        // Print the time taken to sort.
         System.out.println("Time Taken: " + (end - start));
+        // Print the number of comparisons.
         System.out.println("Comparisons: " + comparisons);
     }
 
@@ -115,17 +120,20 @@ class MergeSort {
         int t_arr[] = new int[n];
 
         for (int i = low; i <= high; i += 2) {
+            // Read elements at odd positions w.r.t. low.
             t_arr[k] = arr[i];
             k++;
 
         }
 
         for (int i = low + 1; i <= high; i += 2) {
+            // Read elements at even positions w.r.t. low.
             t_arr[k] = arr[i];
             k++;
         }
 
         for (int i = 0; i < n; i++) {
+            // Copy elements from temporary array to the original array.
             arr[low + i] = t_arr[i];
         }
     }
