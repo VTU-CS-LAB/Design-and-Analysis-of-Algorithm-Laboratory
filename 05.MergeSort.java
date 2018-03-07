@@ -88,53 +88,56 @@ class MergeSort {
             break;
         case 3:
             for (int i = 0; i < n; i++) {
-                arr[i] = i + 1;
+                arr[i] = n - i;
             }
-            generateWorstCase(arr, 0, n - 1);
+            // for (int i = 0; i < n; i++) {
+            //     arr[i] = i + 1;
+            // }
+            // generateWorstCase(arr, 0, n - 1);
             break;
         }
-        
+
         long start = System.nanoTime();
         mergeSort(arr, 0, n - 1);
         long end = System.nanoTime();
         System.out.println("Sorted Array");
-        
+
         // Print the time taken to sort.
         System.out.println("Time Taken: " + (end - start));
         // Print the number of comparisons.
         System.out.println("Comparisons: " + comparisons);
     }
 
-    static void generateWorstCase(int arr[], int low, int high) {
-        if (low < high) {
-            int mid = (low + high) / 2;
-            partition(arr, low, high);
-            generateWorstCase(arr, low, mid);
-            generateWorstCase(arr, mid + 1, high);
-        }
-    }
+    // static void generateWorstCase(int arr[], int low, int high) {
+    //     if (low < high) {
+    //         int mid = (low + high) / 2;
+    //         partition(arr, low, high);
+    //         generateWorstCase(arr, low, mid);
+    //         generateWorstCase(arr, mid + 1, high);
+    //     }
+    // }
 
-    static void partition(int arr[], int low, int high) {
-        int n = high - low + 1;
-        int k = 0;
-        int t_arr[] = new int[n];
+    // static void partition(int arr[], int low, int high) {
+    //     int n = high - low + 1;
+    //     int k = 0;
+    //     int t_arr[] = new int[n];
 
-        for (int i = low; i <= high; i += 2) {
-            // Read elements at odd positions w.r.t. low.
-            t_arr[k] = arr[i];
-            k++;
+    //     for (int i = low; i <= high; i += 2) {
+    //         // Read elements at odd positions w.r.t. low.
+    //         t_arr[k] = arr[i];
+    //         k++;
 
-        }
+    //     }
 
-        for (int i = low + 1; i <= high; i += 2) {
-            // Read elements at even positions w.r.t. low.
-            t_arr[k] = arr[i];
-            k++;
-        }
+    //     for (int i = low + 1; i <= high; i += 2) {
+    //         // Read elements at even positions w.r.t. low.
+    //         t_arr[k] = arr[i];
+    //         k++;
+    //     }
 
-        for (int i = 0; i < n; i++) {
-            // Copy elements from temporary array to the original array.
-            arr[low + i] = t_arr[i];
-        }
-    }
+    //     for (int i = 0; i < n; i++) {
+    //         // Copy elements from temporary array to the original array.
+    //         arr[low + i] = t_arr[i];
+    //     }
+    // }
 }
