@@ -97,7 +97,6 @@ class MergeSort {
             
                 For the actual worst case, uncomment the rest of the code and delete
                 the above 'for' loop.
-            
             */
 
             // for (int i = 0; i < n; i++) {
