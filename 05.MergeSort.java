@@ -14,17 +14,19 @@ import java.util.Scanner;
 class MergeSort {
     static int comparisons = 0;
 
-    static void mergeSort(int arr[], int low, int high) {
+    static int[] arr;
+
+    static void mergeSort(int low, int high) {
         if (low < high) {
             comparisons += 1;
             int mid = (low + high) / 2;
-            mergeSort(arr, low, mid);
-            mergeSort(arr, mid + 1, high);
-            merge(arr, low, mid, high);
+            mergeSort(low, mid);
+            mergeSort(mid + 1, high);
+            merge(low, mid, high);
         }
     }
 
-    static void merge(int arr[], int low, int mid, int high) {
+    static void merge(int low, int mid, int high) {
         int n = high - low + 1;
         int[] t_arr = new int[n];
         int i = low, j = mid + 1, k = 0;
@@ -67,7 +69,7 @@ class MergeSort {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter n value");
         n = scanner.nextInt();
-        int[] arr = new int[n];
+        arr = new int[n];
         int ch;
         System.out.println("Merge Sort");
         System.out.println("1. Best Case");
@@ -102,13 +104,13 @@ class MergeSort {
             // for (int i = 0; i < n; i++) {
             //     arr[i] = i + 1;
             // }
-            // generateWorstCase(arr, 0, n - 1);
+            // generateWorstCase(0, n - 1);
 
             break;
         }
 
         long start = System.nanoTime();
-        mergeSort(arr, 0, n - 1);
+        mergeSort(0, n - 1);
         long end = System.nanoTime();
         System.out.println("Sorted Array");
 
@@ -118,16 +120,16 @@ class MergeSort {
         System.out.println("Comparisons: " + comparisons);
     }
 
-    // static void generateWorstCase(int arr[], int low, int high) {
+    // static void generateWorstCase(int low, int high) {
     //     if (low < high) {
     //         int mid = (low + high) / 2;
-    //         partition(arr, low, high);
-    //         generateWorstCase(arr, low, mid);
-    //         generateWorstCase(arr, mid + 1, high);
+    //         partition(low, high);
+    //         generateWorstCase(low, mid);
+    //         generateWorstCase(mid + 1, high);
     //     }
     // }
 
-    // static void partition(int arr[], int low, int high) {
+    // static void partition(int low, int high) {
     //     int n = high - low + 1;
     //     int k = 0;
     //     int t_arr[] = new int[n];
