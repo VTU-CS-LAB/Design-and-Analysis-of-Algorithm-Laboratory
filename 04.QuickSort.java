@@ -12,15 +12,17 @@ import java.util.Scanner;
 
 class QuickSort {
 
-    static void quickSort(int arr[], int low, int high) {
+    static int[] arr;
+
+    static void quickSort(int low, int high) {
         if (low < high) {
-            int j = partition(arr, low, high);
-            quickSort(arr, low, j - 1);
-            quickSort(arr, j + 1, high);
+            int j = partition(low, high);
+            quickSort(low, j - 1);
+            quickSort(j + 1, high);
         }
     }
 
-    static int partition(int arr[], int low, int high) {
+    static int partition(int low, int high) {
         int pivot = arr[low];
         int i = low, j = high;
         while (i < j) {
@@ -32,7 +34,7 @@ class QuickSort {
                 j = j - 1;
             }
             if (i < j) {
-                interchange(arr, i, j);
+                interchange(i, j);
             }
         }
         arr[low] = arr[j];
@@ -40,7 +42,7 @@ class QuickSort {
         return j;
     }
 
-    static void interchange(int arr[], int i, int j) {
+    static void interchange(int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
@@ -51,12 +53,12 @@ class QuickSort {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter n value");
         n = scanner.nextInt();
-        int[] arr = new int[n];
+        arr = new int[n];
         System.out.println("Enter elements");
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
-        quickSort(arr, 0, n - 1);
+        quickSort(0, n - 1);
         System.out.println("Sorted Array");
         for (int i = 0; i < n; i++) {
             System.out.println(arr[i]);
