@@ -19,6 +19,7 @@ class MergeSort {
     static void mergeSort(int low, int high) {
         if (low < high) {
             comparisons += 1;
+
             int mid = (low + high) / 2;
             mergeSort(low, mid);
             mergeSort(mid + 1, high);
@@ -32,34 +33,40 @@ class MergeSort {
         int i = low, j = mid + 1, k = 0;
         while ((i <= mid) && (j <= high)) {
             comparisons += 2;
+
             if (arr[i] <= arr[j]) {
-                t_arr[k] = arr[i];
                 comparisons += 1;
+
+                t_arr[k] = arr[i];
                 i++;
             } else {
-                t_arr[k] = arr[j];
                 comparisons += 1;
+
+                t_arr[k] = arr[j];
                 j++;
             }
             k++;
         }
         while (i <= mid) {
             // Put remaining elements from left subpart (if any) to temporary array.
-            t_arr[k] = arr[i];
             comparisons += 1;
+
+            t_arr[k] = arr[i];
             i++;
             k++;
         }
         while (j <= high) {
             // Put remaining elements from right subpart (if any) to temporary array.
-            t_arr[k] = arr[j];
             comparisons += 1;
+
+            t_arr[k] = arr[j];
             j++;
             k++;
         }
         for (k = 0; k < n; k++) {
             // Copy Elements from temporary array to original array.
             comparisons += 1;
+
             arr[low + k] = t_arr[k];
         }
     }
