@@ -28,7 +28,8 @@ class Main {
         visited[srcVertex - 1] = true;
 
         int source = 0, cost = 0, target = 0;
-        System.out.println("Edges:");
+        System.out.print("Edges: ");
+        
         for (int i = 1; i < n; i++) {
             int min = Integer.MAX_VALUE;
 
