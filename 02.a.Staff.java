@@ -34,6 +34,7 @@ class Staff {
     }
 }
 
+
 class Teaching extends Staff {
     private String domain;
     private String[] publications;
@@ -62,6 +63,7 @@ class Teaching extends Staff {
     }
 }
 
+
 class Technical extends Staff {
     private String[] skills;
 
@@ -86,6 +88,7 @@ class Technical extends Staff {
     }
 }
 
+
 class Contract extends Staff {
     private int period;
 
@@ -101,6 +104,7 @@ class Contract extends Staff {
         System.out.println("Period: " + period);
     }
 }
+
 
 class Main {
     public static void main(String[] args) {
