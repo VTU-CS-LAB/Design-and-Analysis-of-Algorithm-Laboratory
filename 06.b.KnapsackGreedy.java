@@ -53,6 +53,7 @@ class Knapsack {
     void fill() {
         double currentWeight = 0;
         double currentProfit = 0;
+        System.out.print("Items Considered: ");
         while (currentWeight < capacity) {
             int item = getNext();
 
@@ -61,7 +62,6 @@ class Knapsack {
             }
 
             System.out.print((item + 1) + " ");
-            System.out.println();
 
             if (currentWeight + weight[item] <= capacity) {
                 currentWeight += weight[item];
@@ -75,6 +75,7 @@ class Knapsack {
             }
         }
 
+        System.out.println();
         System.out.println("Maximum Profit is: " + currentProfit);
         System.out.print("Solution Vector: ");
         for (int i = 0; i < solnVector.length; i++) {
