@@ -29,10 +29,6 @@ class Knapsack {
             profit[i] = scanner.nextDouble();
         }
 
-        for (int i = 0; i < n; i++) {
-            ratio[i] = profit[i] / weight[i];
-        }
-
         System.out.println("Enter Capacity of Knapsack");
         capacity = scanner.nextDouble();
     }
@@ -53,6 +49,11 @@ class Knapsack {
     void fill() {
         double currentWeight = 0;
         double currentProfit = 0;
+        
+        for (int i = 0; i < ratio.length; i++) {
+            ratio[i] = profit[i] / weight[i];
+        }
+
         System.out.print("Items Considered: ");
         while (currentWeight < capacity) {
             int item = getNext();
@@ -83,9 +84,7 @@ class Knapsack {
         }
         System.out.println();
     }
-}
 
-class Main {
     public static void main(String[] args) {
         Knapsack knapsack = new Knapsack();
         knapsack.fill();
