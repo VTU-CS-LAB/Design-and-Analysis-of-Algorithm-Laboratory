@@ -46,15 +46,20 @@ class Main {
 
         sort(edges);
 
+        // Declare an array of size vertices to keep track of respective leaders of each element.
         int[] parent = new int[n];
+        // Assign each element of array of with value -1.
         Arrays.fill(parent, -1);
 
         int minCost = 0;
         System.out.println("Edges: ");
         for (int i = 0; i < k; i++) {
+            // Find the super most of leader of source vertex.
             int lsrc = find(parent, edges[i].src);
+            // Find the super most of leader of destination vertex.
             int ldest = find(parent, edges[i].dest);
 
+            // If those two leaders are different then they belong to isolated groups.
             if (lsrc != ldest) {
                 System.out.println((edges[i].src + 1) + " <-> " + (edges[i].dest + 1));
                 minCost += edges[i].weight;
@@ -67,6 +72,7 @@ class Main {
     }
 
     static void sort(Edge[] edges) {
+        // Sort Edges according to their weights using Bubble Sort.
         for (int i = 1; i < edges.length; i++) {
             for (int j = 0; j < edges.length - i; j++) {
                 if (edges[j].weight > edges[j + 1].weight) {
@@ -80,12 +86,15 @@ class Main {
 
     static int find(int[] parent, int i) {
         if (parent[i] == -1) {
+            // Super Most Leader Element Found.
             return i;
         }
+        // Find Above Leader in recurrsive manner.
         return find(parent, parent[i]);
     }
 
     static void union(int[] parent, int lsrc, int ldest) {
+        // Make destination vertex leader of source vertex.
         parent[lsrc] = ldest;
     }
 }
