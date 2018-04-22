@@ -75,7 +75,7 @@ class Main {
                 break;
 
             case 4:
-                return;
+                System.exit(0);
             }
         }
     }
