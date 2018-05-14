@@ -45,7 +45,7 @@ class Main {
         for (int i = n - 1; i >= 0; i--) {
             System.out.print((path[i] + 1) + " ");
         }
-        System.out.println();
+        System.out.println(src);
     }
 
     static int tsp(int v, ArrayList<Integer> set) {
@@ -77,3 +77,18 @@ class Main {
         }
     }
 }
+
+// ///////
+// Output:
+//
+// Enter number of cities
+// 4
+// Enter Adjacency Matrix
+// 0 10 15 20
+// 5 0 9 10
+// 6 13 0 12
+// 8 8 9 0
+// Enter Source City
+// 1
+// Total Cost: 35
+// Path: 1 2 4 3 1
