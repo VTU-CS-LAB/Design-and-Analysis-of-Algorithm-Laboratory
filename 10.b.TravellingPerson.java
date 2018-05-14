@@ -59,7 +59,7 @@ class Main {
             subSet = new ArrayList<Integer>(set);
             subSet.remove(i);
             int cost = graph[v][i] + tsp(i, subSet);
-            // minCost = Math.min(minCost, cost);
+
             if (cost < minCost) {
                 minCost = cost;
                 tempPath[size - 1] = i;
