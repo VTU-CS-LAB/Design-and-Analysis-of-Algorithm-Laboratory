@@ -16,8 +16,8 @@ class Main {
         System.out.println("Enter number of cities");
         n = scanner.nextInt();
 
-        path = new int[n];
-        tempPath = new int[n];
+        path = new int[n + 1];
+        tempPath = new int[n + 1];
         graph = new int[n][n];
 
         System.out.println("Enter Adjacency Matrix");
@@ -38,14 +38,17 @@ class Main {
             set.add(i);
         }
 
+        tempPath[0] = src - 1;
+        tempPath[n] = src - 1;
+
         int cost = tsp(src - 1, set);
         System.out.println("Total Cost: " + cost);
 
         System.out.print("Path: ");
-        for (int i = n - 1; i >= 0; i--) {
+        for (int i = n; i >= 0; i--) {
             System.out.print((path[i] + 1) + " ");
         }
-        System.out.println(src);
+        System.out.println();
     }
 
     static int tsp(int v, ArrayList<Integer> set) {
@@ -62,7 +65,7 @@ class Main {
 
             if (cost < minCost) {
                 minCost = cost;
-                tempPath[size - 1] = i;
+                tempPath[size] = i;
                 if (size == n - 1) {
                     copyArray(path, tempPath);
                 }
@@ -72,7 +75,7 @@ class Main {
     }
 
     static void copyArray(int[] dest, int[] src) {
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < src.length; i++) {
             dest[i] = src[i];
         }
     }
