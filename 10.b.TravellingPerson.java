@@ -9,7 +9,7 @@ import java.util.Scanner;
 class Main {
     static int[][] graph;
     static int[] path, tempPath;
-    static int n;
+    static int n, src;
 
     public static void main(String args[]) {
         Scanner scanner = new Scanner(System.in);
@@ -28,7 +28,7 @@ class Main {
         }
 
         System.out.println("Enter Source City");
-        int src = scanner.nextInt();
+        src = scanner.nextInt();
 
         ArrayList<Integer> set = new ArrayList<Integer>();
         for (int i = 0; i < n; i++) {
@@ -53,7 +53,7 @@ class Main {
 
     static int tsp(int v, ArrayList<Integer> set) {
         if (set.isEmpty()) {
-            return graph[v][0];
+            return graph[v][src - 1];
         }
         int size = set.size();
         ArrayList<Integer> subSet;
