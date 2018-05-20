@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 class Main {
     static int[] arr;
-    static boolean[] solution;
     static int count;
 
     public static void main(String[] args) {
@@ -18,7 +17,6 @@ class Main {
         System.out.println("Enter n value");
         int n = scanner.nextInt();
         arr = new int[n];
-        solution = new boolean[n];
 
         System.out.println("Enter Elements of Set in Increasing Order");
         for (int i = 0; i < n; i++) {
@@ -28,33 +26,32 @@ class Main {
         System.out.println("Enter Total Sum value");
         int total = scanner.nextInt();
 
-        subSet(total, n - 1);
+        subSet(total, n - 1, new boolean[n]);
 
         if (count == 0) {
             System.out.println("No solution");
         }
     }
 
-    static void subSet(int total, int index) {
+    static void subSet(int total, int index, boolean[] solution) {
         if (total == 0) {
-            if (index >= 0) {
-                solution[index] = false;
-            }
-            printSolution();
+            printSolution(solution);
         } else if (total < 0 || index < 0) {
             return;
         } else if (total < arr[index]) {
-            solution[index] = false;
-            subSet(total, index - 1);
+            boolean[] tempSolution = solution.clone();
+            tempSolution[index] = false;
+            subSet(total, index - 1, tempSolution);
         } else {
-            solution[index] = false;
-            subSet(total, index - 1);
-            solution[index] = true;
-            subSet(total - arr[index], index - 1);
+            boolean[] tempSolution = solution.clone();
+            tempSolution[index] = false;
+            subSet(total, index - 1, tempSolution);
+            tempSolution[index] = true;
+            subSet(total - arr[index], index - 1, tempSolution);
         }
     }
 
-    static void printSolution() {
+    static void printSolution(boolean[] solution) {
         count += 1;
         System.out.print("Solution: ");
         for (int i = 0; i < solution.length; i++) {
