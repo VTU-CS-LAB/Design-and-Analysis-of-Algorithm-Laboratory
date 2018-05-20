@@ -37,6 +37,9 @@ class Main {
 
     static void subSet(int total, int index) {
         if (total == 0) {
+            if (index >= 0) {
+                solution[index] = false;
+            }
             printSolution();
         } else if (total < 0 || index < 0) {
             return;
@@ -65,7 +68,7 @@ class Main {
 
 // ///////
 // Output:
-// 
+//
 // Enter n value
 // 5
 // Enter Elements of Set in Increasing Order
