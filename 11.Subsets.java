@@ -38,16 +38,14 @@ class Main {
             printSolution(solution);
         } else if (total < 0 || index < 0) {
             return;
-        } else if (total < arr[index]) {
-            boolean[] tempSolution = solution.clone();
-            tempSolution[index] = false;
-            subSet(total, index - 1, tempSolution);
         } else {
             boolean[] tempSolution = solution.clone();
             tempSolution[index] = false;
             subSet(total, index - 1, tempSolution);
-            tempSolution[index] = true;
-            subSet(total - arr[index], index - 1, tempSolution);
+            if (total >= arr[index]) {
+                tempSolution[index] = true;
+                subSet(total - arr[index], index - 1, tempSolution);
+            }
         }
     }
 
