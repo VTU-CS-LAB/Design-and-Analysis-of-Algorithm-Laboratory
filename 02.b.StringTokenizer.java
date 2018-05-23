@@ -14,6 +14,37 @@ import java.util.StringTokenizer;
 class Customer {
     String name;
     String dob;
+
+    void accept() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter Name and DoB");
+        String input = scanner.nextLine();
+        StringTokenizer stringTokenizer = new StringTokenizer(input, ",");
+        try {
+            name = stringTokenizer.nextToken().trim();
+            dob = stringTokenizer.nextToken().trim();
+        } catch (NoSuchElementException e) {
+            System.out.println("Invalid Format");
+            System.exit(0);
+        }
+    }
+
+    void display() {
+        StringTokenizer stringTokenizer = new StringTokenizer(dob, "/");
+        try {
+            String dd = stringTokenizer.nextToken().trim();
+            String mm = stringTokenizer.nextToken().trim();
+            String yy = stringTokenizer.nextToken().trim();
+
+            StringJoiner stringJoiner = new StringJoiner(", ");
+            stringJoiner.add(name).add(dd).add(mm).add(yy);
+
+            System.out.println(stringJoiner.toString());
+        } catch (NoSuchElementException e) {
+            System.out.println("Invalid Format");
+            System.exit(0);
+        }
+    }
 }
 
 class Main {
@@ -21,38 +52,7 @@ class Main {
 
     public static void main(String[] args) {
         customer = new Customer();
-        accept();
-        display();
-    }
-
-    static void accept() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Name and DoB");
-        String input = scanner.nextLine();
-        StringTokenizer stringTokenizer = new StringTokenizer(input, ",");
-        try {
-            customer.name = stringTokenizer.nextToken().trim();
-            customer.dob = stringTokenizer.nextToken().trim();
-        } catch (NoSuchElementException e) {
-            System.out.println("Invalid Format");
-            System.exit(0);
-        }
-    }
-
-    static void display() {
-        StringTokenizer stringTokenizer = new StringTokenizer(customer.dob, "/");
-        try {
-            String dd = stringTokenizer.nextToken().trim();
-            String mm = stringTokenizer.nextToken().trim();
-            String yy = stringTokenizer.nextToken().trim();
-
-            StringJoiner stringJoiner = new StringJoiner(", ");
-            stringJoiner.add(customer.name).add(dd).add(mm).add(yy);
-
-            System.out.println(stringJoiner.toString());
-        } catch (NoSuchElementException e) {
-            System.out.println("Invalid Format");
-            System.exit(0);
-        }
+        customer.accept();
+        customer.display();
     }
 }
