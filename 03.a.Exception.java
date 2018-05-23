@@ -14,7 +14,7 @@ class Main {
         int a = scanner.nextInt();
         int b = scanner.nextInt();
         if (b != 0) {
-            System.out.println("a/b = " + (a / b));
+            System.out.println("a/b = " + (((float) a) / b));
         } else {
             throw new Exception("b is zero");
         }
