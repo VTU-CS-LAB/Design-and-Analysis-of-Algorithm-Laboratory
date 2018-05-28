@@ -28,7 +28,7 @@ class Main {
         int[] dist = dijkstra(adj, src);
 
         for (int i = 0; i < n; i++) {
-            if (src == (i + 1)) {
+            if ((src - 1) == i) {
                 continue;
             }
             System.out.println("Shortest Distance from " + src + " to " + (i + 1) + " is " + dist[i]);

@@ -18,7 +18,7 @@ class Main {
         int n = scanner.nextInt();
         arr = new int[n];
 
-        System.out.println("Enter Elements of Set in Increasing Order");
+        System.out.println("Enter Elements of Set");
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
@@ -42,10 +42,8 @@ class Main {
             boolean[] tempSolution = solution.clone();
             tempSolution[index] = false;
             subSet(total, index - 1, tempSolution);
-            if (total >= arr[index]) {
-                tempSolution[index] = true;
-                subSet(total - arr[index], index - 1, tempSolution);
-            }
+            tempSolution[index] = true;
+            subSet(total - arr[index], index - 1, tempSolution);
         }
     }
 
