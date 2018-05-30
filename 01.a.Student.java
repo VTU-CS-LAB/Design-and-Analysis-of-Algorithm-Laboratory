@@ -14,9 +14,6 @@ import java.util.Scanner;
 class Student {
     private String usn, name, branch, ph;
 
-    public Student() {
-    }
-
     public void accept() {
         Scanner scanner = new Scanner(System.in);
 

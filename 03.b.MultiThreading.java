@@ -64,8 +64,8 @@ class Main {
         square = new Square();
         cube = new Cube();
 
-        generator.start();
         square.start();
         cube.start();
+        generator.start();
     }
 }
