@@ -9,7 +9,7 @@ import java.util.Scanner;
 class Hamiltonian {
     static int[][] graph;
     static int[] soln;
-    static int n;
+    static int n, count = 0;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -29,13 +29,17 @@ class Hamiltonian {
         // Instatiate Solution array(1 Indexed), (Default Value is 0)
         soln = new int[n + 1];
 
-        System.out.println("Hamiltonian Cycle are (if any)");
+        System.out.println("Hamiltonian Cycle are");
 
         // In a cycle source vertex doesn't matter
         // Assign Starting Point to prevent repetitions
         soln[1] = 1;
         // Call Hamiltonian function to start backtracking from vertex 2
         hamiltonian(2);
+
+        if (count == 0) {
+            System.out.println("No Hamiltonian Cycle");
+        }
     }
 
     static void hamiltonian(int k) {
@@ -89,10 +93,11 @@ class Hamiltonian {
     }
 
     static void printArray() {
+        count += 1;
         // Print Solution Array
         for (int i = 1; i <= n; i++) {
             System.out.print(soln[i] + " ");
         }
-        System.out.println();
+        System.out.println(soln[1]);
     }
 }
