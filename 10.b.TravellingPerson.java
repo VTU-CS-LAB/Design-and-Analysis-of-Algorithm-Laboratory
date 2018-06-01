@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 class Main {
     static int[][] graph;
-    static int[] path, tempPath;
     static int n, src;
 
     public static void main(String args[]) {
@@ -16,8 +15,6 @@ class Main {
         System.out.println("Enter number of cities");
         n = scanner.nextInt();
 
-        path = new int[n + 1];
-        tempPath = new int[n + 1];
         graph = new int[n][n];
 
         System.out.println("Enter Adjacency Matrix");
@@ -38,10 +35,11 @@ class Main {
             set.add(i);
         }
 
-        tempPath[0] = src - 1;
-        tempPath[n] = src - 1;
+        int[] path = new int[n + 1];
+        path[0] = src - 1;
+        path[n] = src - 1;
 
-        int cost = tsp(src - 1, set);
+        int cost = tsp(src - 1, set, path);
         System.out.println("Total Cost: " + cost);
 
         System.out.print("Path: ");
@@ -51,7 +49,7 @@ class Main {
         System.out.println();
     }
 
-    static int tsp(int v, ArrayList<Integer> set) {
+    static int tsp(int v, ArrayList<Integer> set, int[] path) {
         if (set.isEmpty()) {
             return graph[v][src - 1];
         }
@@ -61,21 +59,20 @@ class Main {
         for (Integer i : set) {
             subSet = new ArrayList<Integer>(set);
             subSet.remove(i);
-            int cost = graph[v][i] + tsp(i, subSet);
+            int[] tempPath = path.clone();
+            int cost = graph[v][i] + tsp(i, subSet, tempPath);
 
             if (cost < minCost) {
                 minCost = cost;
                 tempPath[size] = i;
-                if (size == n - 1) {
-                    copyArray(path, tempPath);
-                }
+                copyArray(path, tempPath, size);
             }
         }
         return minCost;
     }
 
-    static void copyArray(int[] dest, int[] src) {
-        for (int i = 0; i < src.length; i++) {
+    static void copyArray(int[] dest, int[] src, int size) {
+        for (int i = 0; i <= size; i++) {
             dest[i] = src[i];
         }
     }
