@@ -36,12 +36,12 @@ class Main {
         }
 
         int[] path = new int[n + 1];
-        path[0] = src - 1;
-        path[n] = src - 1;
 
         int cost = tsp(src - 1, set, path);
         System.out.println("Total Cost: " + cost);
 
+        path[0] = src - 1;
+        path[n] = src - 1;
         System.out.print("Path: ");
         for (int i = n; i >= 0; i--) {
             System.out.print((path[i] + 1) + " ");
@@ -59,20 +59,20 @@ class Main {
         for (Integer i : set) {
             subSet = new ArrayList<Integer>(set);
             subSet.remove(i);
-            int[] tempPath = path.clone();
+            int[] tempPath = new int[n+1];
             int cost = graph[v][i] + tsp(i, subSet, tempPath);
 
             if (cost < minCost) {
                 minCost = cost;
                 tempPath[size] = i;
-                copyArray(path, tempPath, size);
+                copyCentralArray(path, tempPath, size);
             }
         }
         return minCost;
     }
 
-    static void copyArray(int[] dest, int[] src, int size) {
-        for (int i = 0; i <= size; i++) {
+    static void copyCentralArray(int[] dest, int[] src, int size) {
+        for (int i = 1; i <= size; i++) {
             dest[i] = src[i];
         }
     }
